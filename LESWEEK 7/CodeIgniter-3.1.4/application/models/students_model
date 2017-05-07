@@ -1,0 +1,22 @@
+<?php
+
+class Students_model extends CI_Model {
+
+    public function SaveStudents($data) {
+
+        $this -> db -> insert('students', $data);
+
+    }
+
+    public function GetAll() {
+
+        return $this -> db -> get ('students');
+    }
+
+    public function SearchStudents($search){
+        //return $this->db->get('student', $search);
+
+        $sql = "SELECT * FROM students WHERE firstname = ?";
+        return $this->db->query($sql, array($search));
+    }
+}
